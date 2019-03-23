@@ -1,0 +1,22 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "Homework",
+  "main": "keys.js",
+  "scripts": {
+    "test": "Test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J-Falconetti/liri-node-app.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "Joseph Falconetti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J-Falconetti/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/J-Falconetti/liri-node-app#readme"
+}
