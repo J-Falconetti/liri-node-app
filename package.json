@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/J-Falconetti/liri-node-app/issues"
   },
-  "homepage": "https://github.com/J-Falconetti/liri-node-app#readme"
+  "homepage": "https://github.com/J-Falconetti/liri-node-app#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "moment": "^2.24.0",
+    "request": "^2.88.0",
+    "spotify": "^0.3.0"
+  }
 }
