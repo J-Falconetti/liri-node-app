@@ -29,9 +29,9 @@ function runLiRi(command, input) {
 
     };
 };
-
+// this is for the spotify function using node-spoify-api
 function runSpotify(query) {
-    console.log(query)
+    // console.log(query)
     spotify.search({
         type: 'track',
         query: query,
@@ -40,16 +40,17 @@ function runSpotify(query) {
             return console.log('Error occurred: ' + err);
         }
 
-        // console.log(data);
-        console.log("********************TESTING TESTING**************************");
-        console.log(data.tracks.items[0].preview_url);
+
+          
+       
         console.log("Artist: ",data.tracks.items[0].album.artists[0].name );
         console.log("Song Name: ",data.tracks.items[0].name);
-        console.log("link to song: ", )
-        console.log("********************TESTING TESTING**************************");
+        console.log("link to song: ",data.tracks.items[0].preview_url )
+        console.log("This song is from: ",data.tracks.items[0].album.name)
+        
        
    
-        // * A preview link of the song from Spotify
+       
    
         // * The album that the song is from
    
