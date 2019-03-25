@@ -1,6 +1,7 @@
 require("dotenv").config();
 var keys = require('./keys');
 var moment = require('moment');
+moment().format();
 var fs = require('fs');
 var axios = require('axios')
 var Spotify = require('node-spotify-api');
@@ -84,15 +85,30 @@ axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
 // ombd END
 
 // Bands in town
-function runBandsInTown(query) {
-    console.log(query)
-    axios.get("https://rest.bandsintown.com/artists/" + query + "/events?app_id=codingbootcamp")
-    .then(function (response) {
-        console.log(response.data);
+      
+function runBandsInTown(input) {
+    axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp")
+    .then(function(response) {    
+        for (var i = 0; i < response.data.length; i++) {
+console.log ("response " + i)
 
-
+            var concertResults = 
+                "--------------------------------------------------------------------" +
+                    "\nVenue Name: " + response.data[i].venue.name + 
+                    "\nVenue Location: " + response.data[i].venue.city +
+                    "\nDate of the Event: " + moment(response.data[i].datetime).format("L"); //dateArr[0] should be the date separated from the time
+            console.log(concertResults);     
+        }
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+        
 }
-    )}
+
+
+            
+
     // );
 //  }
 
