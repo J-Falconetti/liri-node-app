@@ -52,7 +52,7 @@ function runSpotify(query) {
 // start OMDB---NOW WITH AXIOS!
 function runOMDB(query) {
     // console.log(query)
-}
+
 
 axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
     .then(function (response) {
@@ -79,6 +79,7 @@ axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
         console.log(ouput);
         console.log("________________________________________testing area_______________________")
     });
+}
 
 //   * Rotten Tomatoes Rating of the movie.
 //   * Country where the movie was produced.
@@ -87,11 +88,18 @@ axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
 //   * Actors in the movie.
 
 // ombd END
-// Bands in town
-function runOMDB(query) {
-    // console.log(query)
-}
 
-axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
+// Bands in town
+function runBandsInTown(query) {
+    console.log(query)
+    axios.get("https://rest.bandsintown.com/artists/" + query + "/events?app_id=codingbootcamp")
     .then(function (response) {
+        console.log(response.data);
+
+
+}
+    )}
+    // );
+//  }
+
 
