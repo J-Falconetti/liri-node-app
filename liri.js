@@ -59,17 +59,17 @@ axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
 
         var movie=response.data
 
-        console.log(movie.data);
-        console.log("===================================================")
-        console.log(movie.Ratings[1])
-        console.log("============================================")
-        console.log(input);
-
         // response
         console.log("Movie Title: ",movie.Title);
         console.log("Reliease Year",movie.Year);
         console.log("IMBD Rating:",movie.imdbRating);
-        console.log("Rotten Tomatoes Rating: ",movie.Ratings[1])
+        console.log("Rotten Tomatoes Rating: ",movie.Ratings[1].Value);
+        console.log("Country Produced ",movie.Country);
+        console.log("Movie Lang :",movie.Language);
+        console.log("Plot: ",movie.Plot);
+        console.log("Actors in Movie: ",movie.Actors);
+
+        
     })
     .catch(function (error) {
         console.log(error);
@@ -80,12 +80,6 @@ axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
         console.log("________________________________________testing area_______________________")
     });
 }
-
-//   * Rotten Tomatoes Rating of the movie.
-//   * Country where the movie was produced.
-//   * Language of the movie.
-//   * Plot of the movie.
-//   * Actors in the movie.
 
 // ombd END
 
