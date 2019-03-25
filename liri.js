@@ -32,7 +32,7 @@ function runLiRi(command, input) {
 // start Spotify
 // this is for the spotify function using node-spoify-api
 function runSpotify(query) {
-    // console.log(query)
+    console.log(query)
     spotify.search({
         type: 'track',
         query: query,
