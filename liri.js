@@ -19,7 +19,7 @@ function runLiRi(command, input) {
             break;
         case 'spotify-this-song':
             input ? runSpotify(input) :
-                runSpotify("The Sign");
+                runSpotify("The Sign ace of base");
             break;
         case 'movie-this':
             input ? runOMDB(input) :
