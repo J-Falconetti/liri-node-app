@@ -52,7 +52,7 @@ function runSpotify(query) {
 }
 // start OMDB---NOW WITH AXIOS!
 function runOMDB(query) {
-    // console.log(query)
+
 
 
 axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
@@ -75,11 +75,7 @@ axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
     .catch(function (error) {
         console.log(error);
 
-        console.log("________________________________________testing area_______________________")
-        console.log(response);
-        console.log(ouput);
-        console.log("________________________________________testing area_______________________")
-    });
+          });
 }
 
 // ombd END
@@ -105,11 +101,4 @@ console.log ("response " + i)
     });
         
 }
-
-
-            
-
-    // );
-//  }
-
 
