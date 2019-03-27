@@ -7,10 +7,9 @@ var axios = require('axios')
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 var command = process.argv[2];
-// if (!process.argv[3] === undefined) {
+
 var input = process.argv.slice(3).join('+');
-// console.log(input)
-// }
+
 runLiRi(command, input);
 
 function runLiRi(command, input) {
@@ -19,21 +18,21 @@ function runLiRi(command, input) {
             runBandsInTown(input);
             break;
         case 'spotify-this-song':
-            input === undefined ? runSpotify("The Sign") :
-                runSpotify(input);
+            input ? runSpotify(input) :
+                runSpotify("The Sign");
             break;
         case 'movie-this':
-            input === undefined ? runOMDB('Mr. Nobody') :
-                runOMDB(input);
+            input ? runOMDB(input) :
+                runOMDB('Mr.Nobody');
             break;
         case 'do-what-it-says':
+            rundoit();
 
     };
 };
 // start Spotify
 // this is for the spotify function using node-spoify-api
 function runSpotify(query) {
-    console.log(query)
     spotify.search({
         type: 'track',
         query: query,
@@ -55,50 +54,59 @@ function runOMDB(query) {
 
 
 
-axios.get("http://www.omdbapi.com/?t=" + input + "&apikey=trilogy&")
-    .then(function (response) {
+    axios.get("http://www.omdbapi.com/?t=" + query + "&apikey=trilogy&")
+        .then(function (response) {
 
-        var movie=response.data
+            var movie = response.data
+            // response
+            console.log("Movie Title: ", movie.Title);
+            console.log("Reliease Year", movie.Year);
+            console.log("IMBD Rating:", movie.imdbRating);
+            console.log("Rotten Tomatoes Rating: ", movie.Ratings[0].Value);
+            console.log("Country Produced ", movie.Country);
+            console.log("Movie Lang :", movie.Language);
+            console.log("Plot: ", movie.Plot);
+            console.log("Actors in Movie: ", movie.Actors);
 
-        // response
-        console.log("Movie Title: ",movie.Title);
-        console.log("Reliease Year",movie.Year);
-        console.log("IMBD Rating:",movie.imdbRating);
-        console.log("Rotten Tomatoes Rating: ",movie.Ratings[1].Value);
-        console.log("Country Produced ",movie.Country);
-        console.log("Movie Lang :",movie.Language);
-        console.log("Plot: ",movie.Plot);
-        console.log("Actors in Movie: ",movie.Actors);
 
-        
-    })
-    .catch(function (error) {
-        console.log(error);
+        })
+        .catch(function (error) {
 
-          });
+        });
 }
 
 // ombd END
 
 // Bands in town
-      
+
 function runBandsInTown(input) {
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp")
-    .then(function(response) {    
-        for (var i = 0; i < response.data.length; i++) {
-console.log ("response " + i)
+        .then(function (response) {
+            for (var i = 0; i < response.data.length; i++) {
+                
 
-            var concertResults = 
-                "--------------------------------------------------------------------" +
-                    "\nVenue Name: " + response.data[i].venue.name + 
+                var concertResults =
+                    "--------------------------------------------------------------------" +
+                    "\nVenue Name: " + response.data[i].venue.name +
                     "\nVenue Location: " + response.data[i].venue.city +
                     "\nDate of the Event: " + moment(response.data[i].datetime).format("L"); //dateArr[0] should be the date separated from the time
-            console.log(concertResults);     
-        }
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-        
+                console.log(concertResults);
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
 }
 
+function rundoit() {
+    fs.readFile("random.txt", "utf8", function (err, data) {
+
+        var dataArray = data.split(",")
+        runLiRi(dataArray[0], dataArray[1])
+
+        if (err) {
+            console.log(err);
+        }
+    })
+}

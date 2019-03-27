@@ -1,5 +1,5 @@
 # Liri  
-#### This file is to be viewed in Preview Mode
+#### This file is to be viewed in Preview Mode or direct from GitHub
 
 Welcome to Liri (Siri wannabe)
 Liri is a Node.js Language assistant program that will help you find out information about songs, movies, and even where your favorite band is playing and when.  
@@ -24,7 +24,7 @@ concert-this <band name>
 
 ## Video of progam in use
 
-#### Will self run in preview mode
+#### Will self run in preview mode, direct from GitHub
 
 * ![](images/falconetti_vid.gif) - working gif
 
